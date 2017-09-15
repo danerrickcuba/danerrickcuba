@@ -1,5 +1,5 @@
 #!/bin/bash
-# MSM8974PRO KK kernel build script v0.5
+# msm8926 KK kernel build script v0.5
 
 BUILD_TOP_DIR=..
 BUILD_KERNEL_DIR=$(pwd)
@@ -13,8 +13,8 @@ mkdir -p bin
 ln -sf /usr/bin/python2.7 ./bin/python
 export PATH=$(pwd)/bin:$PATH
 
-KERNEL_DEFCONFIG=msm8974_sec_defconfig
-DEBUG_DEFCONFIG=msm8974_sec_eng_defconfig
+KERNEL_DEFCONFIG=msm8926_sec_defconfig
+DEBUG_DEFCONFIG=msm8926_sec_eng_defconfig
 SELINUX_DEFCONFIG=selinux_defconfig
 SELINUX_LOG_DEFCONFIG=selinux_log_defconfig
 
@@ -86,25 +86,25 @@ CARRIER=${TEMP##*_}
 
 if [[ "$BUILD_COMMAND" == "klte"* ]]; then		# KLTE
 	VARIANT=k${CARRIER}
-	DTS_NAMES=msm8974pro-ac-sec-k-
+	DTS_NAMES=msm8926-ac-sec-k-
 elif [[ "$BUILD_COMMAND" == "kactivelte"* ]]; then	# KACTIVE
 	VARIANT=kactive${CARRIER}
-	DTS_NAMES=msm8974pro-ac-sec-kactivelte-
+	DTS_NAMES=msm8926-ac-sec-kactivelte-
 elif [[ "$BUILD_COMMAND" == "ksportslte"* ]]; then	# KSPORTS
 	VARIANT=ksports${CARRIER}
-	DTS_NAMES=msm8974pro-ac-sec-ksports-
+	DTS_NAMES=msm8926-ac-sec-ksports-
 elif [[ "$BUILD_COMMAND" == "slte"* ]]; then		# SLTE
 	VARIANT=s${CARRIER}
-	DTS_NAMES=msm8974pro-ac-sec-s-
+	DTS_NAMES=msm8926-ac-sec-s-
 elif [[ "$BUILD_COMMAND" == "pateklte"* ]]; then	# PATEKLTE
 	VARIANT=patek${CARRIER}
-	DTS_NAMES=msm8974pro-ac-sec-patek-
+	DTS_NAMES=msm8926-ac-sec-patek-
 else
 	DTS_NAMES=
 fi
 
 PROJECT_NAME=${VARIANT}
-VARIANT_DEFCONFIG=msm8974pro_sec_${MODEL}_${CARRIER}_defconfig
+VARIANT_DEFCONFIG=msm8926_sec_${MODEL}_${CARRIER}_defconfig
 
 CERTIFICATION=NONCERT
 
@@ -148,7 +148,7 @@ FUNC_APPEND_DTB()
 		rm $BUILD_KERNEL_OUT_DIR/arch/arm/boot/*.dtb
 	fi
 	
-	for DTS_FILE in `ls ${BUILD_KERNEL_DIR}/arch/arm/boot/dts/msm8974pro/${DTS_NAMES}*.dts`
+	for DTS_FILE in `ls ${BUILD_KERNEL_DIR}/arch/arm/boot/dts/msm8926/${DTS_NAMES}*.dts`
 	do
 		DTB_FILE=${DTS_FILE%.dts}.dtb
 		DTB_FILE=$BUILD_KERNEL_OUT_DIR/arch/arm/boot/${DTB_FILE##*/}

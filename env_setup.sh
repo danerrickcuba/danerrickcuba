@@ -50,7 +50,7 @@ if [ "$TARGET" != "" ]; then
 else
         echo ""
         echo "You need to define your device target!"
-        echo "example: build_kernel.sh G920P"
+        echo "example: build_kernel.sh T365"
         exit 1
 fi
 
@@ -65,14 +65,9 @@ export KCONFIG_NOTIMESTAMP=true
 export ARCH=arm;
 export SUB_ARCH=arm;
 
-# G920T
-if [ "$TARGET" = "G920T" ] ; then
-	export KERNEL_CONFIG="custom_defconfig";
-fi;
-
-# G925T
-if [ "$TARGET" = "G925T" ] ; then
-	export KERNEL_CONFIG="custom-zeroltetmo";
+# T365
+if [ "$TARGET" = "T365" ] ; then
+	export KERNEL_CONFIG="msm8926-sec_rubenslte_defconfig";
 fi;
 
 # build script
@@ -81,7 +76,7 @@ export TMPFILE=`mktemp -t`;
 
 
 # system compiler
-export CROSS_COMPILE=/home/derrick/arm-linux-androideabi-5.3/bin/arm-
+export CROSS_COMPILE=/home/derrick/arm-linux-androideabi-5.3/bin/arm-linux-androideabi-
 
 
 # CPU Core
