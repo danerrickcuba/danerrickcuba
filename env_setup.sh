@@ -62,16 +62,16 @@ fi
 # set build variables
 BK=build_kernel
 export KCONFIG_NOTIMESTAMP=true
-export ARCH=arm64;
-export SUB_ARCH=arm64;
+export ARCH=arm;
+export SUB_ARCH=arm;
 
-# T365
-if [ "$TARGET" = "T365" ] ; then
+# G920T
+if [ "$TARGET" = "G920T" ] ; then
 	export KERNEL_CONFIG="custom_defconfig";
 fi;
 
-# T365
-if [ "$TARGET" = "T365" ] ; then
+# G925T
+if [ "$TARGET" = "G925T" ] ; then
 	export KERNEL_CONFIG="custom-zeroltetmo";
 fi;
 
@@ -81,7 +81,7 @@ export TMPFILE=`mktemp -t`;
 
 
 # system compiler
-export CROSS_COMPILE=/home/derrick/arm-linux-androideabi-5.3/bin/arm-linux-androideabi-
+export CROSS_COMPILE=/home/derrick/arm-linux-androideabi-5.3/bin/arm-
 
 
 # CPU Core
